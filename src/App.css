@@ -1,0 +1,51 @@
+:root{
+  /*Light Theme*/
+  --primary-blue: #085398; /* Darker, richer blue */
+    --light-blue: #cce4ff;
+    --accent-blue: #3b82f6; /* Richer accent blue */
+    --highlight-green: #2ecc71; /* Highlight color */
+    --background-light: #ffffff;
+    --text-light: #212529;
+
+    
+    --primary-blue-dark: #004085; /* Darker, richer blue */
+    --dark-blue: #00264d;
+    --accent-blue-dark: #1d4ed8; /* Richer accent blue */
+    --highlight-green: #2ecc71; /* Highlight color */
+    --background-dark: #121212;
+    --text-dark: #e1e1e1;
+}
+*{
+  padding:0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body{
+  width: 100vw;
+  overflow-x: hidden;
+}
+.loginpage-bg {
+  background-image: url('../src/images/Images/Login.jpeg'); /* Ensure the path is correct */
+  background-size: cover; /* Adjust based on your needs */
+  background-position: center; /* Adjust based on your needs */
+}
+.centerMargin{
+  margin: 0 auto  !important;
+}
+.logo {
+  text-decoration: underline;
+}
+
+.logo {
+  position: relative;
+}
+
+.logo::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 100%;
+  height: 5px;
+  background-color: black;
+}
