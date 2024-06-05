@@ -11,9 +11,11 @@
   },
   "dependencies": {
     "antd": "^5.18.0",
+    "d3": "^7.9.0",
     "lottie-react": "^2.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-gauge-chart": "^0.5.1",
     "react-router-dom": "^6.23.1"
   },
   "devDependencies": {

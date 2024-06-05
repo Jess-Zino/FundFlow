@@ -2,6 +2,7 @@ import {Routes, Route} from 'react-router-dom'
 import Login from './Pages/Auth/Login'
 import Dashboard from './Pages/Dashboard/Dashboard'
 import Register from './Pages/Auth/Register'
+import './App.css'
 function App() {
  
 

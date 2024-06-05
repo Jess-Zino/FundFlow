@@ -1,35 +1,29 @@
-import Lottie from "lottie-react";
-import {Link } from 'react-router-dom'
-import loginAnimation from '../../images/Animations/Homepage.json'
+import {Link} from 'react-router-dom'
 import { MailOutlined,EyeInvisibleOutlined, EyeTwoTone , LockOutlined } from '@ant-design/icons';
 import { Form , Button,Input } from 'antd';
 const Login = () => {
-    const onFinish = (values) => {
-        console.log('Received values:', values);
-        history.push('/dashboard');
-      };
+
   return (
-    <div className=" w-[100vw] h-[100vh] flex flex-row overflow-y-hidden body-font font-normal items-center  text-[#212529]">
-        <div className={` clip-rect-to-hex flex-[1.4] loginpage-bg  content-['heloo'] w-[20vw] height-[100vh] flex  bg-[#3b82f6]  `}>
-          <Lottie  animationData={loginAnimation}  className="w-[70%] h-[100vh]" />
+    <div className={`flex flex-col w-[100vw] h-[100vh] p-4 loginpage text-white gap-14 body-font`}>
+      <nav className="flex flex-row justify-between items-center">
+        <div className="logo main-font flex flex-row items-center text-[30px] font-semibold logoDown">
+          Fund&nbsp; <span className="logoUp"> Flow</span></div>
+        <div className="flex flex-row justify-between items-center gap-4 body-font">
+          <Link to="/signup">Sign Up</Link>
+          <Link to="/dashboard" className="bg-[#2ecc71] p-[8px] rounded-md">Contact Us</Link>
         </div>
-        <div className="flex-[1] flex flex-col gap-24 px-10 pt-5 h-[100vh] bg-white justify-center items-center">
-           { /*<div className='flex flex-row justify-between items-center'> 
-                <h1 className="main-font text-3xl font-bold text-[#085398]">Fund<span className="text-[#618bb3]">Flow</span> </h1>
-                 <p>New User? <Link to="/signup" className="text-[#3b82f6]  font-semibold">Sign Up</Link></p>
-            </div>
-  */}
-            <div className="flex flex-col justify-center gap-14 w-[100%] mx-auto items-center">
-                <div className="flex flex-col gap-1 items-center">
-                <h1 className="text-3xl font-semibold">Welcome To <span className="text-[#085398] logo">Fund</span><span className="text-[#3b82f6] logo">Flow</span>!</h1>
-                <p>Login to continue</p>
+      </nav>
+      <div className='flex justify-center items-center flex-col gap-2'>
+      <h1 className="text-4xl font-semibold">Welcome Back to FundFlow!</h1>
+ 
+                <p className='text-[16px]'>Ready to dive back into managing your finances? Let&apos;s get started – log in now!</p>
                 </div>
                 
                 <div className="flex flex-col gap-6 w-[100%] mx-auto items-center">
                 <Form
       name="login"
       initialValues={{ remember: true }}
-      onFinish={onFinish}
+      
       layout="horizontal"
       className="flex flex-col items-center"
     >
@@ -37,7 +31,7 @@ const Login = () => {
         name="email"
         rules={[{ required: true, message: 'Please input your Email!' }]}
       >
-        <Input className="w-[30vw] border-[#3b82f6] body-font"
+        <Input className="w-[30vw] body-font"
           type="email"
           size="large"
           placeholder="Email"
@@ -50,7 +44,7 @@ const Login = () => {
         name="password"
         rules={[{ required: true, message: 'Please input your Password!' }]}
       >
-        <Input.Password className="border-[#3b82f6]"
+        <Input.Password className=" placeholder:text-[#333]"
           prefix={<LockOutlined  className="text-[#3b82f6] body-font"/>}
           size="large"
           placeholder="Password"
@@ -60,22 +54,17 @@ const Login = () => {
 
       <Form.Item >
         <div className="flex flex-row gap-4 items-center body-font">
-        <Button type="primary" htmlType="submit" size="large" className="loginBtn body-font">
+        <Button type="primary" htmlType="submit" size="large" className="loginBtn body-font bg-[#2ecc71] ">
           Login
         </Button>
-        <Link to="/forgot-password"  className="text-[#bfbfbf]">Forgot Password?</Link>
+        <Link to="/forgot-password"  className="text-[#dad9d9]">Forgot Password?</Link>
         </div>
        
       </Form.Item>
-      <p className="body-font">New User? <Link to="/signup" className="text-[#3b82f6]  font-semibold">Sign Up</Link></p>
+      <p className="body-font text-white">New User? <Link to="/signup" className="text-[#2ecc71]  font-semibold">Sign Up</Link></p>
     </Form>
                 </div>
-            </div>
-           
-          
-        </div>
-
-    </div>
+    </div>        
   )
 }
 

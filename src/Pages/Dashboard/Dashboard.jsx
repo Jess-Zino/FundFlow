@@ -1,41 +1,47 @@
-import React from 'react'
+import React,{useState} from 'react';
 import {
-    AppstoreOutlined,
-    BarChartOutlined,
-    CloudOutlined,
-    ShopOutlined,
-    TeamOutlined,
-    UploadOutlined,
-    UserOutlined,
-    VideoCameraOutlined,
-  } from '@ant-design/icons';
-  import { Layout, Menu, theme } from 'antd';
-  const { Header, Content, Footer, Sider } = Layout;
-  const items = [
-    UserOutlined,
-    VideoCameraOutlined,
-    UploadOutlined,
-    BarChartOutlined,
-    CloudOutlined,
-    AppstoreOutlined,
-    TeamOutlined,
-    ShopOutlined,
-  ].map((icon, index) => ({
-    key: String(index + 1),
-    icon: React.createElement(icon),
-    label: `nav ${index + 1}`,
-  }));
+  AppstoreOutlined,
+  BarChartOutlined,
+  CloudOutlined,
+  ShopOutlined,
+  TeamOutlined,
+  UploadOutlined,
+  MenuFoldOutlined,
+  MenuUnfoldOutlined,
+  UserOutlined,
+  VideoCameraOutlined,
+} from '@ant-design/icons';
+import { Layout, Menu, theme,Button } from 'antd';
+const { Header, Content, Footer, Sider , } = Layout;
+const items = [
+  UserOutlined,
+  VideoCameraOutlined,
+  UploadOutlined,
+  BarChartOutlined,
+  CloudOutlined,
+  AppstoreOutlined,
+  TeamOutlined,
+  ShopOutlined,
+].map((icon, index) => ({
+  key: String(index + 1),
+  icon: React.createElement(icon),
+  label: `nav ${index + 1}`,
+}));
 const Dashboard = () => {
-    const {
-        token: { colorBgContainer, borderRadiusLG },
-      } = theme.useToken();
+  const [collapsed, setCollapsed] = useState(false);
+  const {
+    token: { colorBgContainer, borderRadiusLG },
+  } = theme.useToken();
   return (
     <Layout hasSider>
     <Sider
+     breakpoint="lg"
+     collapsedWidth="0"
+     collapsible collapsed={collapsed}
       style={{
         overflow: 'auto',
         height: '100vh',
-        position: 'fixed',
+        
         left: 0,
         top: 0,
         bottom: 0,
@@ -46,7 +52,7 @@ const Dashboard = () => {
     </Sider>
     <Layout
       style={{
-        marginLeft: 200,
+        marginLeft: 10,
       }}
     >
       <Header
@@ -54,7 +60,18 @@ const Dashboard = () => {
           padding: 0,
           background: colorBgContainer,
         }}
-      />
+      >
+          <Button
+            type="text"
+            icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+            onClick={() => setCollapsed(!collapsed)}
+            style={{
+              fontSize: '16px',
+              width: 64,
+              height: 64,
+            }}
+          />
+        </Header>
       <Content
         style={{
           margin: '24px 16px 0',
