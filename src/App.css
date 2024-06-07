@@ -6,7 +6,7 @@
     --highlight-green: #171a18; /* Highlight color */
     --background-light: #ffffff;
     --text-light: #212529;
-
+    --other:#ffa500;
     
     --primary-blue-dark: #004085; /* Darker, richer blue */
     --dark-blue: #00264d;
@@ -121,4 +121,7 @@ color: #2ecc71 !important;
 }
 .slick-dots button{
   background-color: #00264d!important;
+}
+.slick-arrow{
+  color: #00264d!important;
 }

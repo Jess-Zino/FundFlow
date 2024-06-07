@@ -17,11 +17,11 @@ class DialGauge extends React.Component {
 
   drawGauge() {
     const { maxValue, value } = this.props;
-    const width = 500;
-    const height = 200; // Adjust height to fit text and pointer
-    const margin = 20;
+    const width = 320;
+    const height = 170; // Adjust height to fit text and pointer
+    const margin = 10;
     const radius = Math.min(width, height * 2) / 2 - margin;
-    const thickness = 80;
+    const thickness = 90;
 
     const svg = d3.select(this.svgRef.current)
       .attr('width', width)
@@ -90,14 +90,14 @@ class DialGauge extends React.Component {
         L${-needleWidthBase / 2},0
         Z
       `)
-      .attr('fill', '#1677ff');
+      .attr('fill', '#333');
 
     // Add a dot at the needle base (blending with the needle)
     g.append('circle')
       .attr('cx', 0)
       .attr('cy', 0)
       .attr('r', 3)
-      .attr('fill', '#1677ff');
+      .attr('fill', '#333');
 
     // Add text for the value
     g.append('text')
