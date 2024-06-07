@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
-import {MenuFoldOutlined, MenuUnfoldOutlined,LogoutOutlined} from '@ant-design/icons';
-import { Layout,  theme,Button } from 'antd';
+
+import { Layout,  theme } from 'antd';
 import SideNav from '../../Components/SideNav';
-const { Header, Content, Footer, Sider , } = Layout;
+import DashboardHeader from '../../Components/DashboardHeader';
+const { Content, Footer, Sider , } = Layout;
 const Dashboard = () => {
   const {
     token: { borderRadiusLG },
   } = theme.useToken();
    const [collapsed, setCollapsed] = useState(false);
+   const handleCollapse = () =>{
+      setCollapsed(!collapsed)
+   }
   return (
     <Layout hasSider className='bg-[f5f5f5]'>
       <Sider
@@ -30,20 +34,7 @@ const Dashboard = () => {
       </div>
       </Sider>
     <Layout className='ml-[10px] bg-[#f5f5f5]'>
-      <Header className='p-0 bg-white'>
-          <Button
-            type="text"
-            icon={collapsed ? <MenuUnfoldOutlined className='text-[#1677ff]' /> : <MenuFoldOutlined />}
-            onClick={() => setCollapsed(!collapsed)}
-            className='text-[16px] w-[64] p-[20px] rounded-none'
-            style={
-            { 
-              width: 64,
-              height: 64,
-              }
-            }
-          />
-        </Header>
+      <DashboardHeader collapse={handleCollapse} iscollapsed={collapsed}/>
       <Content
         style={{
           margin: '24px 16px 0',

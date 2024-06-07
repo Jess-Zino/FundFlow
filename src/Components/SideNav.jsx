@@ -1,28 +1,20 @@
 import {useNavigate} from 'react-router-dom'
-import {useLocation} from 'react-router-dom'
 import {UserOutlined,
-    GiftOutlined,
-    ShoppingOutlined,
-TrophyOutlined,
-FrownOutlined,
-  HomeOutlined,
-  WalletOutlined,
-
-  FileTextOutlined,
-  BellOutlined,
-  SettingOutlined,
-  QuestionCircleOutlined,
-  LogoutOutlined,
+        GiftOutlined,
+        ShoppingOutlined,
+        TrophyOutlined,
+        FrownOutlined,
+        HomeOutlined,
+        WalletOutlined,
+        FileTextOutlined,
+        BellOutlined,
+        SettingOutlined,
+        QuestionCircleOutlined,
+        LogoutOutlined,
   } from '@ant-design/icons';
 import { Menu } from 'antd';
 const SideNav = () => {
     const navigate =  useNavigate()
-    const location = useLocation()
-    //const currentPath = location.pathname;
-    const dashName = (str)=>{
-      const newstr = str.slice(1, str.length)
-      return newstr[0].toUpperCase() + newstr.slice(1)
-    }
    
  
     const icons = [
@@ -41,14 +33,15 @@ const SideNav = () => {
     ];
     const items = icons.map((item) => ({
         key: `/${item.label.toLowerCase()}`,
-        icon: item.icon, // Accessing the icons array directly
+        icon: <span className='text-[#2ecc71]'>{item.icon}</span> , // Accessing the icons array directly
         label: <span className='text-white main-font'>{item.label}</span>,
       }));
   return (
     <div>
       <Menu className=" bg-[#01183c] text-white"   mode="vertical" defaultSelectedKeys={['2']} items={items}   onClick={(item)=>{
             navigate(item.key)
-        }}  theme='dark'/>      
+        }}  theme='dark'/> 
+             
     </div>
   )
 }

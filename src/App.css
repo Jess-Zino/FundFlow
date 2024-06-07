@@ -116,3 +116,6 @@ body{
 input::placeholder{
   color: #4e5861 !important;
 }
+.ant-menu-item-icon{
+color: #2ecc71 !important;
+}
