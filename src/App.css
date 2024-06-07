@@ -119,3 +119,6 @@ input::placeholder{
 .ant-menu-item-icon{
 color: #2ecc71 !important;
 }
+.slick-dots button{
+  background-color: #00264d!important;
+}
