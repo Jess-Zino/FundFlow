@@ -5,54 +5,50 @@ import SideNav from '../../Components/SideNav';
 const { Header, Content, Footer, Sider , } = Layout;
 const Dashboard = () => {
   const {
-    token: { colorBgContainer, borderRadiusLG },
+    token: { borderRadiusLG },
   } = theme.useToken();
    const [collapsed, setCollapsed] = useState(false);
   return (
-    <Layout hasSider className='bg-[#004085]'>
+    <Layout hasSider className='bg-[f5f5f5]'>
       <Sider
-        className='overflow-hidden sticky h-[100vh] top-0 left-0 bottom-0 '
+        className='overflow-hidden h-[100vh] top-0 left-0 bottom-0 '
         breakpoint="lg"
         collapsedWidth="0"
         collapsible collapsed={collapsed}
+        style={
+          {
+            position:'sticky'
+          }
+        }
       >
       <div className="bg-[#01183c] demo-logo-vertical  flex flex-col justify-between h-[100vh] ">
-      <h1 className='text-white text-[20pt] text-center pt-3 main-font'>FundFlow</h1>
-      <SideNav className="body-font"/>
-      <div className='flex flex-row items-center justify-center p-3 gap-3 text-white font-semibold text-[12pt]' >
-      <LogoutOutlined /> Logout
+          <h1 className='text-white text-[20pt] text-center pt-3 main-font'>FundFlow</h1>
+          <SideNav className="body-font"/>
+          <div className='flex flex-row items-center justify-center p-3 gap-3 text-white font-semibold text-[12pt]' >
+         
+          </div>
       </div>
-      
-      </div>
-       </Sider>
-    <Layout
-      style={{
-        marginLeft: 10,
-        background:"#004085"
-      }}
-    >
-      <Header
-        style={{
-          padding: 0,
-          background: "#01183c",
-        }}
-      >
+      </Sider>
+    <Layout className='ml-[10px] bg-[#f5f5f5]'>
+      <Header className='p-0 bg-white'>
           <Button
             type="text"
-            icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+            icon={collapsed ? <MenuUnfoldOutlined className='text-[#1677ff]' /> : <MenuFoldOutlined />}
             onClick={() => setCollapsed(!collapsed)}
-            style={{
-              fontSize: '16px',
+            className='text-[16px] w-[64] p-[20px] rounded-none'
+            style={
+            { 
               width: 64,
               height: 64,
-            }}
+              }
+            }
           />
         </Header>
       <Content
         style={{
           margin: '24px 16px 0',
           overflow: 'initial',
-          background: "#01183c",
+          background: "white",
         }}
       >
            
@@ -60,7 +56,7 @@ const Dashboard = () => {
           style={{
             padding: 24,
             textAlign: 'center',
-            background: "#01183c",
+            background: "white",
             borderRadius: borderRadiusLG,
           }}
         >
@@ -83,7 +79,7 @@ const Dashboard = () => {
       </Content>
       <Footer
         style={{
-          textAlign: 'center',
+          textAlign: 'right',
         }}
       >
         Ant Design ©{new Date().getFullYear()} Created by Ant UED

@@ -7,10 +7,7 @@ TrophyOutlined,
 FrownOutlined,
   HomeOutlined,
   WalletOutlined,
-  ProjectOutlined,
-  SolutionOutlined,
-  CalendarOutlined,
-  TeamOutlined,
+
   FileTextOutlined,
   BellOutlined,
   SettingOutlined,
@@ -40,12 +37,12 @@ const SideNav = () => {
       { key: '9', icon: <SettingOutlined />, label: 'Settings' },
       { key: '10', icon: <QuestionCircleOutlined />, label: 'Help' },
       { key: '11', icon: <UserOutlined />, label: 'Profile' },
-    
+      { key: '12', icon: <LogoutOutlined />, label: 'Logout' },
     ];
     const items = icons.map((item) => ({
         key: `/${item.label.toLowerCase()}`,
         icon: item.icon, // Accessing the icons array directly
-        label: <span className='text-white body-font'>{item.label}</span>,
+        label: <span className='text-white main-font'>{item.label}</span>,
       }));
   return (
     <div>
