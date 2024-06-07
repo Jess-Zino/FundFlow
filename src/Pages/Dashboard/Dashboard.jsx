@@ -1,13 +1,10 @@
-import React, { useState } from 'react';
-
-import { Layout,  theme } from 'antd';
+import { useState } from 'react';
+import { Layout } from 'antd';
 import SideNav from '../../Components/SideNav';
 import DashboardHeader from '../../Components/DashboardHeader';
+import PropTypes from 'prop-types'
 const { Content, Footer, Sider , } = Layout;
-const Dashboard = () => {
-  const {
-    token: { borderRadiusLG },
-  } = theme.useToken();
+const Dashboard = ({dashContent}) => {
    const [collapsed, setCollapsed] = useState(false);
    const handleCollapse = () =>{
       setCollapsed(!collapsed)
@@ -18,7 +15,8 @@ const Dashboard = () => {
         className='overflow-hidden h-[100vh] top-0 left-0 bottom-0 '
         breakpoint="lg"
         collapsedWidth="0"
-        collapsible collapsed={collapsed}
+        collapsible
+         collapsed={collapsed}
         style={
           {
             position:'sticky'
@@ -35,39 +33,9 @@ const Dashboard = () => {
       </Sider>
     <Layout className='ml-[10px] bg-[#f5f5f5]'>
       <DashboardHeader collapse={handleCollapse} iscollapsed={collapsed}/>
-      <Content
-        style={{
-          margin: '24px 16px 0',
-          overflow: 'initial',
-          background: "white",
-        }}
-      >
-           
-        <div
-          style={{
-            padding: 24,
-            textAlign: 'center',
-            background: "white",
-            borderRadius: borderRadiusLG,
-          }}
-        >
-          <p>long content</p>
-          {
-            // indicates very long content
-            Array.from(
-              {
-                length: 100,
-              },
-              (_, index) => (
-                <React.Fragment key={index}>
-                  {index % 20 === 0 && index ? 'more' : '...'}
-                  <br />
-                </React.Fragment>
-              ),
-            )
-          }
-        </div>
-      </Content>
+      <Content className='mt-[20px] mb-[10px]'>
+          {dashContent}
+        </Content>
       <Footer
         style={{
           textAlign: 'right',
@@ -81,3 +49,6 @@ const Dashboard = () => {
 }
 
 export default Dashboard
+Dashboard.propTypes ={
+  dashContent:PropTypes.element.isRequired,
+}

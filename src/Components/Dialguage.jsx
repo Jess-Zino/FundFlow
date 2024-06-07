@@ -17,10 +17,10 @@ class DialGauge extends React.Component {
 
   drawGauge() {
     const { maxValue, value } = this.props;
-    const width = 200;
-    const height = 200;
+    const width = 520;
+    const height = 175; // Adjust height to fit text and pointer
     const margin = 10;
-    const radius = Math.min(width, height) / 2 - margin;
+    const radius = Math.min(width, height * 2) / 2 - margin;
     const thickness = 40;
 
     const svg = d3.select(this.svgRef.current)
@@ -31,23 +31,23 @@ class DialGauge extends React.Component {
     svg.selectAll('*').remove();
 
     const g = svg.append('g')
-      .attr('transform', `translate(${width / 2}, ${height / 2})`);
+      .attr('transform', `translate(${width / 2}, ${height - margin})`); // Adjust translation for semi-circle
 
     const scale = d3.scaleLinear()
       .domain([0, maxValue])
-      .range([-0.8 * Math.PI, 0.8 * Math.PI]);
+      .range([-Math.PI / 2, Math.PI / 2]); // Range adjusted for 180 degrees
 
     // Draw the outer border arc
     const borderArc = d3.arc()
       .innerRadius(radius - thickness)
       .outerRadius(radius)
-      .startAngle(-0.85 * Math.PI)
-      .endAngle(0.85 * Math.PI);
+      .startAngle(-Math.PI / 2)
+      .endAngle(Math.PI / 2);
 
     g.append('path')
       .attr('d', borderArc)
       .attr('fill', 'none')
-      .attr('stroke', '#333')
+      .attr('stroke', '#2ecc71')
       .attr('stroke-width', 2);
 
     // Draw the background arc
@@ -56,22 +56,22 @@ class DialGauge extends React.Component {
       .outerRadius(radius);
 
     g.append('path')
-      .attr('d', backgroundArc({ startAngle: -0.85 * Math.PI, endAngle: 0.85 * Math.PI }))
-      .attr('fill', '#e0e0e0');
+      .attr('d', backgroundArc({ startAngle: -Math.PI / 2, endAngle: Math.PI / 2 }))
+      .attr('fill', '#fff');
 
     // Draw the foreground arc (actual value)
     const foregroundArc = d3.arc()
       .innerRadius(radius - thickness)
       .outerRadius(radius)
-      .startAngle(-0.85 * Math.PI);
+      .startAngle(-Math.PI / 2);
 
     g.append('path')
       .datum({ endAngle: scale(value) })
       .attr('d', foregroundArc)
-      .attr('fill', '#800080'); // Purple color
+      .attr('fill', '#2ecc71bb'); // Green color
 
     // Add needle
-    const needleLength = radius - thickness -5;
+    const needleLength = radius - thickness - 5;
     const needleWidthBase = 7;
     const needleWidthTip = 1;
     const needleAngle = scale(value);
@@ -90,27 +90,27 @@ class DialGauge extends React.Component {
         L${-needleWidthBase / 2},0
         Z
       `)
-      .attr('fill', '#ff5722');
+      .attr('fill', '#1677ff');
 
     // Add a dot at the needle base (blending with the needle)
     g.append('circle')
       .attr('cx', 0)
       .attr('cy', 0)
       .attr('r', 3)
-      .attr('fill', '#ff5722');
+      .attr('fill', '#1677ff');
 
     // Add text for the value
     g.append('text')
       .attr('text-anchor', 'middle')
       .attr('font-size', '18px')
-      .attr('dy', `${radius + 10}px`)
+      .attr('dy', '2em') // Position below the needle base
       .text(value);
 
     // Add text for the maximum value
     g.append('text')
       .attr('text-anchor', 'middle')
       .attr('font-size', '12px')
-      .attr('dy', `${radius + 30}px`)
+      .attr('dy', '3.5em') // Position further below
       .text(`/${maxValue}`);
   }
 
@@ -122,3 +122,4 @@ class DialGauge extends React.Component {
 }
 
 export default DialGauge;
+
