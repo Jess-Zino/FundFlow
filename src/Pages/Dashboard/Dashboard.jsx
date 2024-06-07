@@ -1,65 +1,40 @@
-import React,{useState} from 'react';
-import {
-  AppstoreOutlined,
-  BarChartOutlined,
-  CloudOutlined,
-  ShopOutlined,
-  TeamOutlined,
-  UploadOutlined,
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
-} from '@ant-design/icons';
-import { Layout, Menu, theme,Button } from 'antd';
-
+import React, { useState } from 'react';
+import {MenuFoldOutlined, MenuUnfoldOutlined,LogoutOutlined} from '@ant-design/icons';
+import { Layout,  theme,Button } from 'antd';
+import SideNav from '../../Components/SideNav';
 const { Header, Content, Footer, Sider , } = Layout;
-const items = [
-  UserOutlined,
-  VideoCameraOutlined,
-  UploadOutlined,
-  BarChartOutlined,
-  CloudOutlined,
-  AppstoreOutlined,
-  TeamOutlined,
-  ShopOutlined,
-].map((icon, index) => ({
-  key: String(index + 1),
-  icon: React.createElement(icon),
-  label: `nav ${index + 1}`,
-}));
 const Dashboard = () => {
-  const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
+   const [collapsed, setCollapsed] = useState(false);
   return (
-    <Layout hasSider>
-    <Sider
-     breakpoint="lg"
-     collapsedWidth="0"
-     collapsible collapsed={collapsed}
-      style={{
-        overflow: 'auto',
-        height: '100vh',
-        
-        left: 0,
-        top: 0,
-        bottom: 0,
-      }}
-    >
-      <div className="demo-logo-vertical" />
-      <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']} items={items} />
-    </Sider>
+    <Layout hasSider className='bg-[#004085]'>
+      <Sider
+        className='overflow-hidden sticky h-[100vh] top-0 left-0 bottom-0 '
+        breakpoint="lg"
+        collapsedWidth="0"
+        collapsible collapsed={collapsed}
+      >
+      <div className="bg-[#01183c] demo-logo-vertical  flex flex-col justify-between h-[100vh] ">
+      <h1 className='text-white text-[20pt] text-center pt-3 main-font'>FundFlow</h1>
+      <SideNav className="body-font"/>
+      <div className='flex flex-row items-center justify-center p-3 gap-3 text-white font-semibold text-[12pt]' >
+      <LogoutOutlined /> Logout
+      </div>
+      
+      </div>
+       </Sider>
     <Layout
       style={{
         marginLeft: 10,
+        background:"#004085"
       }}
     >
       <Header
         style={{
           padding: 0,
-          background: colorBgContainer,
+          background: "#01183c",
         }}
       >
           <Button
@@ -77,6 +52,7 @@ const Dashboard = () => {
         style={{
           margin: '24px 16px 0',
           overflow: 'initial',
+          background: "#01183c",
         }}
       >
            
@@ -84,7 +60,7 @@ const Dashboard = () => {
           style={{
             padding: 24,
             textAlign: 'center',
-            background: colorBgContainer,
+            background: "#01183c",
             borderRadius: borderRadiusLG,
           }}
         >
