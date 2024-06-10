@@ -33,7 +33,10 @@ const Dashboard = ({dashContent}) => {
       </Sider>
     <Layout className='ml-[10px] bg-[#f5f5f5]'>
       <DashboardHeader collapse={handleCollapse} iscollapsed={collapsed}/>
-      <Content className='mt-[20px] mb-[10px]'>
+      <Content className='mt-[20px] mb-[10px]'
+      style={{
+        marginLeft: !collapsed ? '0px' : '100px',
+      }}>
           {dashContent}
         </Content>
       <Footer
