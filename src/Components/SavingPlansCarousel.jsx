@@ -5,7 +5,7 @@ import DialGauge from './Dialguage';
 
 const SavingPlansCarousel = () => {
   return (
-   <Bento className="flex flex-row justify-center items-center" size={40} height={41.5} content={
+   <Bento className="flex flex-row justify-center items-center" size={39} height={41.5} content={
     <Carousel arrows autoplay autoplaySpeed={4000}  effect="fade" className='text-center rounded-xl p-0 flex flex-col items-center  '
     style={{width:'27vw', height:'36vh'}}
    >

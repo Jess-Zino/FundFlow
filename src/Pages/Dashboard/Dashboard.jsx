@@ -38,10 +38,10 @@ const Dashboard = ({dashContent}) => {
         </Content>
       <Footer
         style={{
-          textAlign: 'right',
+          textAlign: 'center',
         }}
       >
-        Ant Design ©{new Date().getFullYear()} Created by Ant UED
+        FundFlow ltd ©{new Date().getFullYear()} Created by Jem
       </Footer>
     </Layout>
   </Layout>

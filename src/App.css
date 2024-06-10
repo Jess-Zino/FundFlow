@@ -125,3 +125,6 @@ color: #2ecc71 !important;
 .slick-arrow{
   color: #00264d!important;
 }
+.ant-pagination-item {
+  font-family: 'montserrat' !important;
+}
